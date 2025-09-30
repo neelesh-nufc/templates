@@ -1,0 +1,1 @@
+This repository is a collection of DSA (Data Structures & Algorithms) templates curated for interview preparation. It serves as a quick reference to commonly used patterns, problem-solving approaches, and boilerplate code, helping to save time during practice and coding interviews.
