@@ -16,8 +16,8 @@ def kadanes_algorithm(arr):
     #initialize curr_max and global_max with first element
     curr_max = arr[0]
     global_max = arr[0]
-
-    for i in range(1, len(arr)):
+ 
+    for i in range(1, len(arr)): # for num in arr[1:]:
         curr_max = max(arr[i], curr_max + arr[i])
         global_max = max(global_max, curr_max)
 
