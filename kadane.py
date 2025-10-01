@@ -3,7 +3,7 @@ Object: Find the maximum sum of a continuous subarray within 1D array of numbers
 
 Time complexity: O(n)
 
-Core Idea: Keep track of two main variable:
+Core Idea: Keep track of two main variable
 
 1. curr_max
 2. global_max
