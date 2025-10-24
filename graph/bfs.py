@@ -1,3 +1,12 @@
+"""
+Used for:
+
+Counting connected components
+Finding reachable nodes
+Shortest path in unweighted graphs
+"""
+
+
 from collections import deque
 
 def bfs(start):
