@@ -12,13 +12,37 @@ Finding reachable nodes
 Shortest path in unweighted graphs
 """
 
-def dfs(node):
-    for nei in graph[node]:
-        if nei not in visited:
-            visited.add(nei)
-            dfs(nei)
 
-visited = set()
-for node in graph:
-    if node not in visited:
-        dfs(node)
+# Number of island 
+
+class Solution:
+    def numIslands(self, grid: List[List[str]]) -> int:
+        total_islands = 0
+        visited = set()
+        directions = [(1,0), (-1,0), (0,1), (0,-1)]
+
+        rows, cols = len(grid), len(grid[0])
+
+        def dfs(r, c):
+            # base condition: out of bounds, already visited, or water
+            if (
+                r < 0 or r >= rows or
+                c < 0 or c >= cols or
+                grid[r][c] == '0' or
+                (r, c) in visited
+            ):
+                return
+            
+            visited.add((r, c))
+
+            for dr, dc in directions:
+                dfs(r + dr, c + dc)
+
+        for r in range(rows):
+            for c in range(cols):
+                if (r, c) not in visited and grid[r][c] == '1':
+                    dfs(r, c)
+                    total_islands += 1
+        
+        return total_islands
+
