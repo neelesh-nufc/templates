@@ -3,6 +3,8 @@
 | ------------------------------------------------------ | ------------------- | ------------ | ------------------------------------------------------------------------------ |
 | You want a tree connecting all nodes with minimum cost | Undirected Weighted | Any          | Greedily grow MST by always adding the smallest edge that connects to new node |
 
+Finds a Minimum Spanning Tree (MST) for a weighted, undirected graph.
+
 """
 
 import heapq
@@ -26,6 +28,7 @@ def prim(n, edges):
         total_cost += w
         for nei_w, nei in graph[u]:
             if nei not in visited:
+                # This is the only difference between Dijkstra and Prim's Algorithm 
                 heapq.heappush(heap, (nei_w, nei))
     return total_cost
 
