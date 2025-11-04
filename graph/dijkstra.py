@@ -3,9 +3,8 @@
 | ---------------------------------------- | ------------------- | ------------ | ----------------------------------------------------------------------- |
 | You need the shortest path from a source | Directed/Undirected | Non-negative | Greedily expand the shortest current node using a priority queue (heap) |
 
-In Dijkstra, visited works because we only need the shortest distance to each node.
-Here, we can reach the same node with different numbers of stops —
-and a longer route with more stops might still be cheaper.
+Purpose: Finds the shortest paths from a single source node to all other nodes in a weighted graph with non-negative edge weights.
+
 """
 
 import heapq
