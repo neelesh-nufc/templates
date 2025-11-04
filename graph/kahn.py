@@ -22,7 +22,7 @@ def topo_sort_bfs(n, edges):
             if indegree[nei] == 0:
                 q.append(nei)
 
-    # If topo doesn't include all nodes → cycle exists
+    # If topo doesn't include all nodes → cycle exiniis
     if len(topo) != n:
         return []  # no valid topo order (cycle)
     

@@ -6,35 +6,38 @@
 Graph must be directed and acyclic (DAG)
 """
 
-from collections import defaultdict
+class Solution:
+    def canFinish(self, numCourses: int, prerequisites: List[List[int]]) -> bool:
+        graph = defaultdict(list)
 
-def topo_sort_dfs(n, edges):
-    graph = defaultdict(list)
-    for u, v in edges:
-        graph[u].append(v)
+        for u, v in prerequisites:
+            graph[u].append(v)
+        
+        visited = set()
+        cycle = set()
+        stack = []
 
-    visited = set()
-    stack = []      # to store topological order
-    cycle = set()   # for cycle detection (optional)
+        def dfs(node):
+            if node in cycle:
+                return False 
 
-    def dfs(node):
-        if node in cycle:
-            raise ValueError("Cycle detected!")  # or return []
-        if node in visited:
-            return
+            if node in visited:
+                return True
+            
+            cycle.add(node)
 
-        cycle.add(node)
-        for nei in graph[node]:
-            dfs(nei)
-        cycle.remove(node)
+            for nei in graph[node]:
+                if not dfs(nei):
+                    return False 
 
-        visited.add(node)
-        stack.append(node)
+            cycle.remove(node)
+            visited.add(node)
+            stack.append(node)
 
-    for node in range(n):
-        if node not in visited:
-            dfs(node)
+            return True 
 
-    stack.reverse()
-    return stack
-
+        for i in range(numCourses):
+            if not dfs(i):
+                return []
+        
+        return stack
