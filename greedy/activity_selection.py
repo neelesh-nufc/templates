@@ -16,3 +16,26 @@ def solve_activity_selection(intervals):
             last_finish_time = end # Update the finish time of the last selected activity
 
     return count
+
+
+############################################################################################
+# Example Usage:
+# intervals = [[1, 3], [2, 4], [3, 5], [0, 6]]
+# print(solve_activity_selection(intervals)) # Output: 2 (e.g., [1,3], [3,5])
+
+# LeetCode 435 Specific (return number of intervals to remove):
+def eraseOverlapIntervals(intervals: list[list[int]]) -> int:
+    if not intervals:
+        return 0
+
+    intervals.sort(key=lambda x: x[1]) # Sort by end times
+
+    end = intervals[0][1]
+    count = 1 # Number of non-overlapping intervals
+
+    for i in range(1, len(intervals)):
+        if intervals[i][0] >= end: # If current interval starts after or at the end of the last non-overlapping interval
+            count += 1
+            end = intervals[i][1] # Update the end time
+
+    return len(intervals) - count # Total intervals - non-overlapping intervals
